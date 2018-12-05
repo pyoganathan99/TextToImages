@@ -204,7 +204,7 @@
     <div id="invisible" class="blue white-text" style="width:1280px;height:720px;position: absolute; left: -2000px;">
         <div class="inner" style="font-size:100px;">
             <div class="ml1" id="invtxt">
-                <span class="text-wrapper">
+                <span class="text-wrapper" style="text-align:center;padding:48px;">
                     <span class="letters" id="main"></span>
                 </span>
             </div>
@@ -256,12 +256,14 @@
         var lines = raw.split("\n");
 
         var blob;
+        
+        var name = prompt('Filename:');
 
         for (var i in lines) {
             var e = lines[i];
             main.innerHTML = e;
             blob = await domtoimage.toBlob(invisible, { style: { position: 'initial', left: 0 } });
-            await saveAs(blob, i+'.png');
+            await saveAs(blob, name+i+'.png');
         };
 
     }
