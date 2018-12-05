@@ -1,0 +1,282 @@
+<html>
+
+<head>
+    <title>Video Maker</title>
+</head>
+
+<link rel="stylesheet" href="materialize.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="styleshet" href="fontselect-alternate.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    .holder {
+        display: table;
+    }
+
+    .ml1 {
+        font-size: 50px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .ml1 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+
+    .ml1 .text-wrapper {
+        position: relative;
+        display: inline-block;
+        padding-top: 0.1em;
+        padding-right: 0.05em;
+        padding-bottom: 0.15em;
+    }
+
+    .ml1 .line {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+        transform-origin: 0 0;
+    }
+
+    .ml1 .line1 {
+        top: 0;
+    }
+
+    .ml1 .line2 {
+        bottom: 0;
+    }
+
+    .font-select {
+        width: 100%;
+    }
+
+    .font-select>a {
+        border-radius: 0px;
+        border: 0;
+        border-bottom: 2px solid #ff4081;
+        box-shadow: none;
+    }
+
+    .fs-drop {
+        width: 100%;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+        box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .fs-results {
+        border-radius: 0px;
+    }
+
+    .z-depth-3 {
+        box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3)
+    }
+</style>
+
+<body>
+    <nav style="height:64px;">
+        <div class="nav-wrapper pink lighten-1" style="padding-left:64px; padding-right:64px;">
+            <a href="#" style="font-size:x-large">Music - Video Maker</a>
+        </div>
+    </nav>
+
+    <div class="row" style="position:absolute; width:100%; top:64px; bottom:0px; margin-bottom:0px;">
+        <div class="col s3 z-depth-2" style="height:100%; padding:24px;">
+            <h5 style="font-size:large">Content</h5>
+            <br>
+
+            <textarea id="content">hello;3000</textarea>
+        </div>
+        <div class="col s6" style="height:100%; position:relative;">
+
+            <div style="height:100%;width:100%;display:flex;align-items:center;justify-content:center;">
+                <div id="holder" class="holder blue z-depth-2 white-text" style="position:relative; top:-48; width:60vh; height:60vh;">
+                    <div class="ml1" style="text-align:center;">
+                            <span class="text-wrapper">
+                                <span class="letters" id="main">Yogi</span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin:24px;position:absolute; left:0; right:0; height:80px; bottom:0px;">
+                <div class="white col z-depth-3 s8 offset-s2" style="height:100%; position:relative;">
+
+                    <div class="file-field input-field" style="padding-top:2px;">
+                        <div class="btn blue">
+                            <span>
+                                <i class="material-icons white-text">
+                                    music_note
+                                </i>
+                            </span>
+                            <input type="file">
+                        </div>
+                        <div class="file-path-wrapper" style="visibility:hidden; width:0px;">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+
+                    <div class="grey" style="position:absolute; left:74; width:2; top:24; bottom:24;"></div>
+
+                    <div style="position:absolute; top:0; left:64; right:0; bottom:0; margin:12;">
+
+                        <center style="margin-top:8px;">
+
+                            <a class="btn-floating white btn-flat waves-effect">
+                                <i class="material-icons orange-text">stop</i>
+                            </a>
+                            <a class="btn-floating btn-flat waves-effect waves-grey deep-orange">
+                                <i class="material-icons">play_arrow</i>
+                            </a>
+                            <a class="btn-floating white black-text btn-flat waves-effect waves-grey">
+                                <i class="material-icons orange-text">replay</i>
+                            </a>
+
+                        </center>
+
+                    </div>
+                    <div class="progress red lighten-3" style="margin:0;position:absolute; left:0; right:0; bottom:0;">
+                        <div class="determinate red" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s3 z-depth-2" style="height:100%; padding:24px; ">
+            <h5 style="font-size:large">Configuration</h5>
+            <br>
+
+
+            <input id="font" type="text">
+            <br>
+            <br>
+            <br>
+
+            <h6>Font Size</h6>
+
+            <p class="range-field">
+                <input oninput="$('.ml1').css('font-size',this.value + 'px')" type="range" value="50" id="test5" min="25"
+                    max="100" />
+            </p>
+
+
+            <div class="input-field" style="padding-top:24px;">
+                <select>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                    <option value="deep-purple">Deep Purple</option>
+                    <option value="indigo">Indigo</option>
+                    <option value="light-blue">Light Blue</option>
+                    <option value="cyan">Cyan</option>
+                    <option value="teal">Teal</option>
+                    <option value="green">Green</option>
+                    <option value="light-green">Light Green</option>
+                    <option value="lime">Lime</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="amber">Amber</option>
+                    <option value="orange">Orange</option>
+                    <option value="deep-orange">Deep Orange</option>
+                    <option value="brown">Brown</option>
+                    <option value="grey">Grey</option>
+                    <option value="blue-grey">Blue Grey</option>
+                    <option value="black">Black</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="materialize.js"></script>
+<script src="jquery.fontselect.js"></script>
+
+<script>
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+    $('select').on('change', (e) => {
+        document.getElementById('holder').className = "holder z-depth-2 white-text " + $('select').val();
+    })
+
+
+    $("#font").fontselect({ style: 'font-select z-depth-0' }).change(function () {
+
+        // replace + signs with spaces for css
+        var font = $(this).val().replace(/\+/g, ' ');
+
+        console.log(font);
+
+        font = font.split(':');
+        $('.ml1').css('font-family', font[0]);
+
+    });
+
+    function initContainer(text) {
+
+        $("#main").html(text);
+
+        $('.ml1 .letters').each(function () {
+            $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+        });
+    }
+
+    function start() {
+
+        var raw = $("textarea").val();
+        var lines = raw.split("\n");
+        var content = lines.map(line => line.split(";"))
+
+        var count = -1;
+
+        function next() {
+
+            count++;
+
+            if (count >= content.length)
+                return;
+
+            initContainer(content[count][0])
+            var duration = parseInt(content[count][1]);
+
+            anime.timeline().add({
+
+                targets: '.letter',
+                opacity: [0, 1],
+                duration: 600,
+                delay:function(el,i){
+                    console.log(el);
+                    return 70*i;
+                },
+                easing: "easeOutExpo",
+
+            }).add({
+
+                targets: '.letter',
+                opacity: [1, 0],
+                duration: 400,
+                delay: function(el,i){
+                    return (duration-400)+(70*i);
+                },
+                easing: "easeInExpo",
+                complete: ()=>{next();}
+
+            });
+
+        }
+
+        next();
+
+    }
+
+</script>
+
+</html>
